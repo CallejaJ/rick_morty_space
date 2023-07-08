@@ -24,7 +24,7 @@ export function AuthContextProvider({ children }) {
 
     function login({ email, password }) {
 
-        if (email === "ricky@mail.com" && password === "5678") {
+        if (email === "ricky@mail.com" && password === "Ricky2023") {
             setUser({ email })
             localStorage.setItem(RICK_MORTY_KEY, email)
             setErrorMessage(null)

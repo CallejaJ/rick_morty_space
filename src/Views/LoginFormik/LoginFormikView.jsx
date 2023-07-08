@@ -1,47 +1,21 @@
-import { Box, Button, Alert } from '@mui/material';
 import { useAuthContext } from '../../context/AuthContext';
-import loginico from '../../assets/loginico.gif';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
+import { Box, CssBaseline, Container, Grid, Button, Alert, TextField } from '@mui/material';
 import loginbg2 from '../../assets/loginbg2.gif';
-import { useFormik } from "formik";
-import * as yup from "yup";
+import loginico from '../../assets/loginico.gif';
 
-const initialValues = {
-    email: "",
-    password: "",
-};
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
-// min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
+export default function LoginFormikView({ formik }) {
 
-yup.object().shape({
-    email: yup.string().email("Please enter a valid email").required("Required"),
-    password: yup
-        .string()
-        .matches(passwordRules, {
-            message:
-                "Min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit",
-        })
-        .required("Required"),
-
-});
-
-export default function LoginFormikView({ onSubmit }) {
-    const { errorMessage } = useAuthContext(); // es una respuesta del backend
+    const { errorMessage } = useAuthContext();
+    // es una respuesta del backend si hay errores en el endpoint
 
     const {
         values,
         touched,
         errors,
         handleChange,
-        handleBlur,
         handleSubmit,
-        isSubmitting,
-    }
-        = useFormik({ initialValues, onSubmit })
+    } = formik;
 
     return (
         <>
@@ -81,45 +55,45 @@ export default function LoginFormikView({ onSubmit }) {
                                 <TextField
                                     margin="normal"
                                     fullWidth
+                                    autoFocus
+                                    name="email"
                                     id="email"
+                                    type="email"
                                     placeholder="Type your e-mail address"
-                                    name='email'
-                                    type='email'
                                     value={values.email}
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    className={errors.email && touched.email ? "input-error" : ""}
-                                    autoFocus
+                                    error={touched.email && Boolean(errors.email)}
+                                    helperText={touched.email && errors.email}
                                 />
                                 <TextField
                                     margin="normal"
                                     fullWidth
                                     name="password"
-                                    placeholder="Type your password"
-                                    type="password"
                                     id="password"
+                                    type="password"
+                                    placeholder="Type your password"
                                     value={values.password}
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    className={errors.email && touched.email ? "input-error" : ""}
-
+                                    error={touched.password && Boolean(errors.password)}
+                                    helperText={touched.password & errors.password}
                                 />
-                                {errorMessage ? (<Alert variant="filled" severity="info">
-                                    {errorMessage}
-                                </Alert>) : null}
+                                {errorMessage ? (
+                                    <Alert variant="filled" severity="info">
+                                        {errorMessage}
+                                    </Alert>
+                                ) : null}
                                 <Button
-                                    disabled={isSubmitting}
-                                    type="submit"
-                                    fullWidth
+                                    sx={{ mt: 2, mb: 2 }}
                                     variant="contained"
                                     color='secondary'
-                                    sx={{ mt: 2, mb: 2 }}
-                                    onSubmit={onSubmit}
+                                    fullWidth
+                                    type="submit"
                                 >
                                     ENTER
                                 </Button>
                                 <Grid container>
                                 </Grid>
+
                             </Box>
                         </Box>
                     </Container>
