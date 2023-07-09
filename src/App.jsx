@@ -22,20 +22,48 @@ import { purple, green } from '@mui/material/colors';
 const purpleTheme = createTheme({
   palette: {
     primary: {
-      light: purple[300],
-      main: purple[500],
+      light: purple[400],
+      main: purple[600],
       dark: purple[800],
     },
     secondary: {
       light: green[400],
       main: green[600],
-      dark: green[300],
+      dark: green[800],
     },
     text: {
       primary: "#aa00ff",
       secondary: ""
     }
   },
+  components: {
+    MuiTypography: {
+      defaultProps: {
+        variantMapping: {
+          h1: 'h2',
+          h2: 'h2',
+          h3: 'h2',
+          h4: 'h2',
+          h5: 'h2',
+          h6: 'h2',
+          subtitle1: 'h2',
+          subtitle2: 'h2',
+          body1: 'span',
+          body2: 'span',
+        },
+      },
+    },
+  },
+
+  MUIPagination: {
+    styleOverrides: {
+      root: {
+        button: {
+          color: '#884032',
+        },
+      },
+    },
+  }
 });
 
 export default function App() {
