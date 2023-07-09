@@ -15,6 +15,7 @@ export default function Card({ id, name, image, status }) {
             />
             <CardContent>
                 <Typography
+                    color="#884032"
                     noWrap
                     gutterBottom variant="h5"
                     component="div">

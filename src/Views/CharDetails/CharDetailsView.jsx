@@ -1,15 +1,20 @@
-import { Box, Grid, Typography } from '@mui/material'
-import { Card as CardMUI } from '@mui/material'
-import Button from '@mui/material/Button';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import background2 from '../../assets/background2.webp';
 import { Link } from 'react-router-dom';
+import { Box, Grid, Typography, Paper, Button } from '@mui/material'
+import { styled } from '@mui/material/styles';
 import back from '../../assets/back.gif'
+import background2 from '../../assets/background2.webp';
 
 
 
 export default function CharDetailsView({ char }) {
+
+    const Img = styled('img')({
+        margin: 'auto',
+        display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
+    });
+
     return (
         <>{char ? (
             <>
@@ -28,127 +33,120 @@ export default function CharDetailsView({ char }) {
                 >
 
 
-                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                    <Grid rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                         sx={{
 
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}>
-                        <Box
+
+                        <Paper
                             sx={{
-                                position: "absolute",
-                                bottom: "0%",
-                                right: "1%",
+                                p: 12,
+                                margin: '2',
+                                maxWidth: 500,
+                                flexGrow: 1,
                             }}
                         >
-                            <Link to="/chars">
-                                <img src={back} />
-                            </Link>
-                        </Box>
+                            <Grid container spacing={2}>
 
-                        <CardMUI container>
-                            <CardMedia
-                                component="img"
-                                image={char.image}
-                                alt={char.name}
-                            />
-                            <CardContent>
-                                <Box sx={{ width: '100%' }}>
-                                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                        <Grid item xs={6} spacing={2}>
-                                            <Typography component="h4" variant="h5">
+                                <Grid item >
+                                    <Box marginTop={1} marginBottom={1}>
+                                        <Img src={char.image} alt={char.name} sx={{
+                                            borderRadius: 8,
+                                            border: '6px solid',
+                                            borderColor: '#884032',
+                                        }} />
+                                    </Box>
+                                    <Typography variant="h4" component="h4" color="#884032">
+                                        {char.name}
+                                    </Typography>
+
+                                </Grid>
+                                <Grid item xs={12} sm>
+                                    <Grid item xs>
+                                        <Grid item xs>
+                                            <Typography variant="h6" component="h6">
                                                 Status
                                             </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Button
-                                                variant="contained"
-                                                size="large"
-                                                color='primary'>
-                                                {char.status}
-                                            </Button>
-
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Typography component="h4" variant="h5">
+                                            <Box marginTop={1} marginBottom={1}>
+                                                <Button
+                                                    variant="contained"
+                                                    size="small"
+                                                    color='primary'>
+                                                    {char.status}
+                                                </Button>
+                                            </Box>
+                                            <Typography variant="h6" component="h6">
                                                 Origin
                                             </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Button
-                                                variant="contained"
-                                                size="large"
-                                                color='secondary'>
-                                                {char.location.name}
-                                            </Button>
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Typography component="h4" variant="h5">
-                                                Species
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Button
-                                                variant="contained"
-                                                size="large"
-                                                color='primary'>
-                                                {char.species}
-                                            </Button>
-
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Typography component="h4" variant="h5">
+                                            <Box marginTop={1} marginBottom={1}>
+                                                <Button
+                                                    variant="contained"
+                                                    size="small"
+                                                    color='secondary'>
+                                                    {char.location.name}
+                                                </Button>
+                                            </Box>
+                                            <Typography variant="h6" component="h6">
                                                 Gender
                                             </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Button
-                                                variant="contained"
-                                                size="large"
-                                                color='secondary'>
-                                                {char.gender}
-                                            </Button>
+                                            <Box marginTop={1} marginBottom={1}>
+                                                <Button
+                                                    variant="contained"
+                                                    size="small"
+                                                    color='primary'>
+                                                    {char.gender}
+                                                </Button>
+                                            </Box>
+                                            <Typography variant="h6" component="h6">
+                                                Species
+                                            </Typography>
+                                            <Box marginTop={1} marginBottom={1}>
+                                                <Button
+                                                    variant="contained"
+                                                    size="small"
+                                                    color='secondary'>
+                                                    {char.species}
+                                                </Button>
+                                            </Box>
 
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Typography component="h4" variant="h5">
+                                            <Typography variant="h6" component="h6">
                                                 Type
                                             </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Button
-                                                variant="contained"
-                                                size="large"
-                                                color='primary'>
-                                                {char.type}
-                                            </Button>
+                                            <Box marginTop={1} marginBottom={1}>
+                                                <Button
+                                                    variant="contained"
+                                                    size="small"
+                                                    color='primary'>
+                                                    {char.type}
+                                                </Button>
+                                            </Box>
 
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Typography component="h4" variant="h5">
-                                                Origin
+                                            <Typography variant="h6" component="h6">
+                                                Created
                                             </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Button
-                                                variant="contained"
-                                                size="large"
-                                                color='primary'>
-                                                {char.origin.name}
-                                            </Button>
+                                            <Box marginTop={1} marginBottom={1}>
+                                                <Button
+                                                    variant="contained"
+                                                    size="small"
+                                                    color='secondary'>
+                                                    {char.created}
+                                                </Button>
+                                            </Box>
+
+                                            <Box marginTop={5}>
+                                                <Link to="/chars">
+                                                    <img src={back} />
+                                                </Link>
+                                            </Box>
 
                                         </Grid>
-
                                     </Grid>
-                                </Box>
-                            </CardContent>
-                        </CardMUI>
+                                </Grid>
+                            </Grid>
+                        </Paper>
                     </Grid>
                 </Box>
             </>
