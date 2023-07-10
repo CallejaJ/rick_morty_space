@@ -8,6 +8,14 @@ export default function Chars() {
     const [page, setPage] = useState(1);
     const [searchValue, setSearchValue] = useState("")
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        });
+    }, [page]);
+
     function handleChange(event, value) {
         setPage(value);
     }
