@@ -33,7 +33,7 @@ export default function CharDetailsView({ char }) {
                 >
 
 
-                    <Grid rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                    <Box xs={12} md={4} spacing={2} rowSpacing={1}
                         sx={{
 
                             display: 'flex',
@@ -43,30 +43,33 @@ export default function CharDetailsView({ char }) {
 
                         <Paper
                             sx={{
-                                p: 12,
-                                margin: '2',
-                                maxWidth: 500,
+                                p: 8,
+                                margin: '6',
+                                maxWidth: 350,
                                 flexGrow: 1,
                             }}
                         >
-                            <Grid container spacing={2}>
+                            <Box container marginBottom={4} spacing={1} >
 
-                                <Grid item >
-                                    <Box marginTop={1} marginBottom={1}>
+                                <Box >
+                                    <Box marginBottom={3}>
                                         <Img src={char.image} alt={char.name} sx={{
                                             borderRadius: 8,
                                             border: '6px solid',
                                             borderColor: '#884032',
                                         }} />
                                     </Box>
-                                    <Typography variant="h4" component="h4" color="#884032">
-                                        {char.name}
-                                    </Typography>
+                                    <Box marginBottom={3}>
 
-                                </Grid>
-                                <Grid item xs={12} sm>
-                                    <Grid item xs>
-                                        <Grid item xs>
+                                        <Typography variant="h4" component="h4" color="#884032">
+                                            {char.name}
+                                        </Typography>
+                                    </Box>
+                                </Box>
+
+                                <Box >
+                                    <Box item xs>
+                                        <Box item xs>
                                             <Typography variant="h6" component="h6">
                                                 Status
                                             </Typography>
@@ -142,12 +145,12 @@ export default function CharDetailsView({ char }) {
                                                 </Link>
                                             </Box>
 
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            </Box>
                         </Paper>
-                    </Grid>
+                    </Box>
                 </Box>
             </>
         ) : (
@@ -172,7 +175,7 @@ export default function CharDetailsView({ char }) {
                     >
 
 
-                        <Grid rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                        <Box rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                             sx={{
 
                                 display: 'flex',
@@ -188,9 +191,9 @@ export default function CharDetailsView({ char }) {
                                     flexGrow: 1,
                                 }}
                             >
-                                <Grid container spacing={2}>
+                                <Box container spacing={2}>
 
-                                    <Grid item >
+                                    <Box item >
                                         <Box marginTop={1} marginBottom={1}>
                                             <Img sx={{
                                                 borderRadius: 8,
@@ -201,10 +204,10 @@ export default function CharDetailsView({ char }) {
                                         <Typography variant="h4" component="h4" color="#884032">
                                         </Typography>
 
-                                    </Grid>
-                                    <Grid item xs={12} sm>
-                                        <Grid item xs>
-                                            <Grid item xs>
+                                    </Box>
+                                    <Box item xs={12} sm>
+                                        <Box item xs>
+                                            <Box item xs>
                                                 <Typography variant="h6" component="h6">
                                                     Status
                                                 </Typography>
@@ -274,12 +277,12 @@ export default function CharDetailsView({ char }) {
                                                     </Link>
                                                 </Box>
 
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
+                                            </Box>
+                                        </Box>
+                                    </Box>
+                                </Box>
                             </Paper>
-                        </Grid>
+                        </Box>
                     </Box>
                 </Skeleton>
             </>

@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import CharsView from "../Chars/CharsView";
 
-
 export default function Chars() {
 
     const [chars, setChars] = useState(null);
     const [page, setPage] = useState(1);
     const [searchValue, setSearchValue] = useState("")
+    const [message, setMessage] = useState(null)
 
     useEffect(() => {
         window.scrollTo({
@@ -27,9 +27,18 @@ export default function Chars() {
     useEffect(function () {
 
         async function fetchData() {
-            const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}&name=${searchValue}`);
-            const data = await response.json();
-            setChars(data);
+            const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}&name=${searchValue}`
+            );
+
+            if (!response.ok) {
+                setMessage("No chars found with this description");
+                setChars(null)
+            }
+            else {
+                const data = await response.json();
+                setChars(data);
+                setMessage(null);
+            }
         }
 
         fetchData();
@@ -43,5 +52,6 @@ export default function Chars() {
         chars={chars}
         onSearch={onSearchChar}
         searchValue={searchValue}
+        message={message}
     />
 }
